@@ -124,20 +124,18 @@ function calculateDestination() {
   return destination;
 }
 
-for (let index = 1; index <= numQuestions; index++) {
-  const buttonChoiceQuestion = document.querySelectorAll(
-    `[ap-quiz="option_question${index}"]`
-  );
+const buttonChoiceQuestion = document.querySelectorAll(`[ap-quiz-choice]`);
 
-  buttonChoiceQuestion.forEach((btnChoice) => {
-    btnChoice.addEventListener("click", () => {
-      const choice = btnChoice.getAttribute("ap-quiz-choice");
-      params.set(`q${index}`, choice);
-      url = url.split("?")[0] + "?" + params.toString();
-      console.log(url);
-    });
+buttonChoiceQuestion.forEach((btnChoice) => {
+  btnChoice.addEventListener("click", () => {
+    const choice = btnChoice.getAttribute("ap-quiz-choice");
+    const parentBtn = btnChoice.parentElement.parentElement;
+    const numberQuestion = parentBtn.querySelector('[ap-quiz-question]').getAttribute("ap-quiz-question");
+    params.set(`q${numberQuestion}`, choice);
+    url = url.split("?")[0] + "?" + params.toString();
+    console.log(url);
   });
-}
+});
 
 btnCalcDest.addEventListener("click", () => {
   params = new URLSearchParams(window.location.search);
