@@ -834,7 +834,7 @@ buttonChoiceQuestion.forEach((btnChoice) => {
     const numberQuestion = parentBtn
       .querySelector("[ap-quiz-question]")
       .getAttribute("ap-quiz-question");
-    userChoice.push(choice);
+    userChoice[numberQuestion - 1] = choice;
     console.log(choice, parentBtn, numberQuestion, userChoice);
     // params.set(`q${numberQuestion}`, choice);
     // url = url.split("?")[0] + "?" + params.toString();
