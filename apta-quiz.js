@@ -781,16 +781,12 @@ const options = [
   },
 ];
 
-let userChoice = [];
 let points = [];
+let userChoice = [];
 
 let numQuestions = 7;
 
-let url = window.location.href;
-let params = new URLSearchParams(window.location.search);
 let weightScore = [2, 1.5, 1.5, 1, 1, 1, 2];
-
-const btnCalcDest = document.querySelector('[ap-quiz="calc_dest"]');
 
 function calculateValuePoint() {
   userChoice.forEach((choice) => {
@@ -826,6 +822,7 @@ function calculateDestination() {
 }
 
 const buttonChoiceQuestion = document.querySelectorAll(`[ap-quiz-choice]`);
+const btnCalcDest = document.querySelector('[ap-quiz="calc_dest"]');
 
 buttonChoiceQuestion.forEach((btnChoice) => {
   btnChoice.addEventListener("click", () => {
@@ -835,25 +832,19 @@ buttonChoiceQuestion.forEach((btnChoice) => {
       .querySelector("[ap-quiz-question]")
       .getAttribute("ap-quiz-question");
     userChoice[numberQuestion - 1] = choice;
-    console.log(choice, parentBtn, numberQuestion, userChoice);
-    // params.set(`q${numberQuestion}`, choice);
-    // url = url.split("?")[0] + "?" + params.toString();
-    // console.log(url);
   });
 });
 
 btnCalcDest.addEventListener("click", () => {
-  // params = new URLSearchParams(window.location.search);
-
-  // for (let index = 1; index <= numQuestions; index++) {
-  //   const parametro = params.get(`q${index}`);
-  //   if (parametro !== null) {
-  //     userChoice.push(parametro);
-  //   }
-  // }
-
   calculateValuePoint();
   const destinationName = calculateDestination();
 
-  console.log(destinationName);
+  const hiddenInput = document.querySelector('[ap-quiz="destinationSaved"]');
+  hiddenInput.value = destinationName;
+
+  const url = `${window.location.href}/destination-matchmaking-congrats?${destinationName}`;
+
+  const form = document.querySelector('[ap-quiz="form"]');
+  form.submit();
+  window.location.href = url;
 });
