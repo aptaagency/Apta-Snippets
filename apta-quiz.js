@@ -842,9 +842,11 @@ btnCalcDest.addEventListener("click", () => {
   const hiddenInput = document.querySelector('[ap-quiz="destinationSaved"]');
   hiddenInput.value = destinationName;
 
-  const url = `${window.location.href}/destination-matchmaking-congrats?${destinationName}`;
+  const url = `${window.location.hostname}/destination-matchmaking-congrats?${destinationName}`;
 
   const form = document.querySelector('[ap-quiz="form"]');
   form.submit();
-  window.location.href = url;
+  console.log(form);
+  console.log(url);
+  // window.location.href = url;
 });
