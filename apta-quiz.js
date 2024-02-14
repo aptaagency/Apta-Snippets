@@ -847,7 +847,5 @@ btnCalcDest.addEventListener("click", (event) => {
 
   const submit = document.querySelector('[ap-quiz="submit"]');
   submit.click();
-  console.log(submit);
-  console.log(url);
-  // window.location.href = url;
+  window.location.href = url;
 });
