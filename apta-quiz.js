@@ -834,22 +834,23 @@ buttonChoiceQuestion.forEach((btnChoice) => {
     const numberQuestion = parentBtn
       .querySelector("[ap-quiz-question]")
       .getAttribute("ap-quiz-question");
-    console.log(choice, parentBtn, numberQuestion);
-    params.set(`q${numberQuestion}`, choice);
-    url = url.split("?")[0] + "?" + params.toString();
-    console.log(url);
+    userChoice.push(choice);
+    console.log(choice, parentBtn, numberQuestion, userChoice);
+    // params.set(`q${numberQuestion}`, choice);
+    // url = url.split("?")[0] + "?" + params.toString();
+    // console.log(url);
   });
 });
 
 btnCalcDest.addEventListener("click", () => {
-  params = new URLSearchParams(window.location.search);
+  // params = new URLSearchParams(window.location.search);
 
-  for (let index = 1; index <= numQuestions; index++) {
-    const parametro = params.get(`q${index}`);
-    if (parametro !== null) {
-      userChoice.push(parametro);
-    }
-  }
+  // for (let index = 1; index <= numQuestions; index++) {
+  //   const parametro = params.get(`q${index}`);
+  //   if (parametro !== null) {
+  //     userChoice.push(parametro);
+  //   }
+  // }
 
   calculateValuePoint();
   const destinationName = calculateDestination();
