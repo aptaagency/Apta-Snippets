@@ -835,7 +835,8 @@ buttonChoiceQuestion.forEach((btnChoice) => {
   });
 });
 
-btnCalcDest.addEventListener("click", () => {
+btnCalcDest.addEventListener("click", (event) => {
+  event.preventDefault();
   calculateValuePoint();
   const destinationName = calculateDestination();
 
