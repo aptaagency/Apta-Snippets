@@ -852,5 +852,5 @@ btnCalcDest.addEventListener("click", (event) => {
 
   setTimeout(function () {
     window.location.href = url;
-  }, 10000);
+  }, 5000);
 });
