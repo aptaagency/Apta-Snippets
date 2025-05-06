@@ -639,3 +639,55 @@ For the solution to work as intended, it's important that:
 2. Computes the remaining time at regular intervals.
 3. Updates the display in the countdown element.
 4. Stops updating once the countdown reaches zero.
+
+### ap-required-fields.js
+
+**Objective**  
+The purpose of this code is to ensure that all required form inputs are correctly filled before enabling the submit button.
+
+---
+
+**Basic Requirements**
+
+For the solution to work as intended, it's important that:
+
+- **Required Inputs are Marked:**
+  - Each input that must be validated should have the attribute `data-required-input`.
+- **Submit Button is Defined:**
+  - The submit button should have the attribute `data-submit-button`.
+- **Script Executes on Page Load:**
+  - The script runs after the DOM is fully loaded (`DOMContentLoaded`).
+
+---
+
+**Elements and Attributes Used**
+
+#### Required Input
+
+- **Custom Attribute:** `data-required-input`
+- **Functionality:** Marks input or checkbox fields that must be filled/checked for the form to be considered valid.
+
+#### Submit Button
+
+- **Custom Attribute:** `data-submit-button`
+- **Functionality:** The button that gets enabled only when all required fields are valid.
+
+---
+
+**Code Operation**
+
+#### Validation Logic (`[data-required-input]`)
+
+1. The script selects all inputs marked with `data-required-input` and the button marked with `data-submit-button`.
+2. On every `input` event (and `change` for checkboxes), it runs a validation function.
+3. The validation checks:
+   - If the input is a checkbox: it must be checked.
+   - For all other inputs: they must not be empty or consist only of whitespace.
+4. If all fields pass validation, the submit button is enabled (`disabled = false`); otherwise, it remains disabled.
+
+---
+
+**Initialization**
+
+- When the page loads, the submit button is disabled by default to prevent submission without validation.
+- Event listeners are added to each required field to handle real-time validation.
